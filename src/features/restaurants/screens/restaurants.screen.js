@@ -1,16 +1,30 @@
 import React from 'react';
 
-import {
-   SafeAreaView,
-   View,
-   Text,
-   Platform,
-   StyleSheet,
-   StatusBar,
-} from 'react-native';
+import { SafeAreaView, View, Text, Platform, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
+import styled from 'styled-components/native';
 
 import RestaurantInfo from '../components/restaurant-info.component.js';
+
+const AppWrapper = styled.View`
+   flex: 1;
+   align-items: center;
+   justify-content: center;
+`;
+const SearchBarWrapper = styled.View`
+   flex: 1;
+   width: 100%;
+   justify-content: center;
+   padding-left: ${({ theme }) => theme.sizes[1]};
+   min-height: 48px;
+`;
+const ListView = styled.View`
+   flex: 15;
+   width: 100%;
+   background-color: ${({ theme }) => theme.colors.bg.secondary};
+   padding: ${({ theme }) => theme.sizes[0]};
+   padding-top: ${({ theme }) => theme.sizes[1]};
+`;
 
 const isAndroid = Platform.OS === 'android';
 
@@ -22,38 +36,16 @@ const RestaurantsScreen = () => {
             marginTop: isAndroid ? StatusBar.currentHeight : 0,
          }}
       >
-         <View style={styles.container}>
-            <View style={styles.searchBar}>
+         <AppWrapper>
+            <SearchBarWrapper>
                <Searchbar placeholder='Search' />
-            </View>
-            <View style={styles.listView}>
+            </SearchBarWrapper>
+            <ListView>
                <RestaurantInfo />
-            </View>
-         </View>
+            </ListView>
+         </AppWrapper>
       </SafeAreaView>
    );
 };
 
 export default RestaurantsScreen;
-
-const styles = StyleSheet.create({
-   container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-   },
-   searchBar: {
-      flex: 1,
-      width: '100%',
-      justifyContent: 'center',
-      paddingLeft: 10,
-      minHeight: 48,
-   },
-   listView: {
-      flex: 15,
-      width: '100%',
-      backgroundColor: 'blue',
-      paddingLeft: 10,
-      paddingTop: 10,
-   },
-});
