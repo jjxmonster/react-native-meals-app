@@ -1,10 +1,9 @@
 import React from 'react';
+import styled from 'styled-components/native';
 
 import { SafeAreaView, View, Text, Platform, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import styled from 'styled-components/native';
-
-import RestaurantInfo from '../components/restaurant-info.component.js';
+import RestaurantInfo from '../components/restaurant-info-card.component.js';
 
 const AppWrapper = styled.View`
    flex: 1;
