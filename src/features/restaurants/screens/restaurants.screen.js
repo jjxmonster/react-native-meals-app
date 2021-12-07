@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import { SafeAreaView, View, Text, Platform, StatusBar } from 'react-native';
+import { SafeAreaView, FlatList, Platform, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import RestaurantInfo from '../components/restaurant-info-card.component.js';
+import RestaurantInfoCard from '../components/restaurant-info-card.component.js';
 
 const AppWrapper = styled.View`
    flex: 1;
@@ -15,14 +15,14 @@ const SearchBarWrapper = styled.View`
    width: 100%;
    justify-content: center;
    padding-left: ${({ theme }) => theme.sizes[1]};
+   padding-right: ${({ theme }) => theme.sizes[1]};
    min-height: 48px;
 `;
 const ListView = styled.View`
    flex: 15;
    width: 100%;
-   background-color: ${({ theme }) => theme.colors.bg.secondary};
-   padding: ${({ theme }) => theme.sizes[0]};
-   padding-top: ${({ theme }) => theme.sizes[1]};
+   padding-left: ${({ theme }) => theme.sizes[1]};
+   padding-right: ${({ theme }) => theme.sizes[1]};
 `;
 
 const isAndroid = Platform.OS === 'android';
@@ -40,7 +40,18 @@ const RestaurantsScreen = () => {
                <Searchbar placeholder='Search' />
             </SearchBarWrapper>
             <ListView>
-               <RestaurantInfo />
+               <FlatList
+                  data={[
+                     { name: 1 },
+                     { name: 2 },
+                     { name: 3 },
+                     { name: 4 },
+                     { name: 5 },
+                     { name: 6 },
+                  ]}
+                  renderItem={() => <RestaurantInfoCard />}
+                  keyExtractor={item => item.name}
+               />
             </ListView>
          </AppWrapper>
       </SafeAreaView>
