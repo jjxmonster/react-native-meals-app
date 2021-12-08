@@ -37,13 +37,8 @@ const RestaurantInfo = ({ restaurant = {} }) => {
                <Text variant='label'>{name}</Text>
                <Rating>
                   <View style={{ flexDirection: 'row' }}>
-                     {ratingArray.map(number => (
-                        <SvgXml
-                           xml={star}
-                           key={number}
-                           width={20}
-                           height={20}
-                        />
+                     {ratingArray.map((number, index) => (
+                        <SvgXml xml={star} key={index} width={20} height={20} />
                      ))}
                   </View>
                   {isClosedTemporarily ? (
