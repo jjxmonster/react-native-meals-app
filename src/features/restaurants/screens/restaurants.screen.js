@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components/native';
+
+import { RestaurantsContext } from '../../../services/restaurants/restaurants.context.js';
 
 import { SafeAreaView, FlatList, Platform, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
@@ -25,14 +27,12 @@ const ListView = styled.View`
    padding-right: ${({ theme }) => theme.sizes[1]};
 `;
 
-const isAndroid = Platform.OS === 'android';
-
 const RestaurantsScreen = () => {
+   const restaurantContext = useContext(RestaurantsContext);
    return (
       <SafeAreaView
          style={{
             flex: 1,
-            marginTop: isAndroid ? StatusBar.currentHeight : 0,
          }}
       >
          <AppWrapper>
@@ -41,14 +41,7 @@ const RestaurantsScreen = () => {
             </SearchBarWrapper>
             <ListView>
                <FlatList
-                  data={[
-                     { name: 1 },
-                     { name: 2 },
-                     { name: 3 },
-                     { name: 4 },
-                     { name: 5 },
-                     { name: 6 },
-                  ]}
+                  data={restaurantContext.restaurants}
                   renderItem={() => <RestaurantInfoCard />}
                   keyExtractor={item => item.name}
                />
