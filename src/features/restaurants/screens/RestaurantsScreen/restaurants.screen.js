@@ -1,35 +1,27 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components/native';
 
-import { RestaurantsContext } from '../../../services/restaurants/restaurants.context.js';
+import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context.js';
 
-import { SafeAreaView, FlatList, Platform, StatusBar } from 'react-native';
+import { SafeAreaView, FlatList } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 import { Searchbar } from 'react-native-paper';
-import RestaurantInfoCard from '../components/restaurant-info-card.component.js';
 
-const AppWrapper = styled.View`
-   flex: 1;
-   align-items: center;
-   justify-content: center;
-`;
-const SearchBarWrapper = styled.View`
-   flex: 1;
-   width: 100%;
-   justify-content: center;
-   padding-left: ${({ theme }) => theme.sizes[1]};
-   padding-right: ${({ theme }) => theme.sizes[1]};
-   min-height: 48px;
-`;
-const ListView = styled.View`
-   flex: 15;
-   width: 100%;
-   padding-left: ${({ theme }) => theme.sizes[1]};
-   padding-right: ${({ theme }) => theme.sizes[1]};
-`;
+import RestaurantInfoCard from '../../components/restaurant-info-card.component.js';
+import {
+   AppWrapper,
+   SearchBarWrapper,
+   ListView,
+   LoadingIndicatorWrapper,
+} from './restaurants.screen.styles.js';
 
 const RestaurantsScreen = () => {
    const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-   return (
+
+   return isLoading ? (
+      <LoadingIndicatorWrapper>
+         <ActivityIndicator animating={true} size='large' color={'tomato'} />
+      </LoadingIndicatorWrapper>
+   ) : (
       <SafeAreaView
          style={{
             flex: 1,

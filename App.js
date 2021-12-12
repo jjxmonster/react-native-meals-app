@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context.js';
+import { LocationContextProvider } from './src/services/location/location.context.js';
 
 // fonts
 import {
@@ -15,7 +16,7 @@ import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
 
 //screens
-import RestaurantsScreen from './src/features/restaurants/screens/restaurants.screen.js';
+import RestaurantsScreen from './src/features/restaurants/screens/RestaurantsScreen/restaurants.screen.js';
 import SettingsScreen from './src/features/restaurants/screens/settings.screen.js';
 import Map from './src/features/restaurants/screens/map.screen.js';
 
@@ -75,11 +76,13 @@ export default function App() {
    return (
       <>
          <ThemeProvider theme={theme}>
-            <RestaurantsContextProvider>
-               <NavigationContainer>
-                  <MyTabs />
-               </NavigationContainer>
-            </RestaurantsContextProvider>
+            <LocationContextProvider>
+               <RestaurantsContextProvider>
+                  <NavigationContainer>
+                     <MyTabs />
+                  </NavigationContainer>
+               </RestaurantsContextProvider>
+            </LocationContextProvider>
          </ThemeProvider>
          <ExpoStatusBar style='auto' />
       </>
