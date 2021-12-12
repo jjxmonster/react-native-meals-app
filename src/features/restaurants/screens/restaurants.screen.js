@@ -28,7 +28,7 @@ const ListView = styled.View`
 `;
 
 const RestaurantsScreen = () => {
-   const restaurantContext = useContext(RestaurantsContext);
+   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
    return (
       <SafeAreaView
          style={{
@@ -41,8 +41,10 @@ const RestaurantsScreen = () => {
             </SearchBarWrapper>
             <ListView>
                <FlatList
-                  data={restaurantContext.restaurants}
-                  renderItem={() => <RestaurantInfoCard />}
+                  data={restaurants}
+                  renderItem={({ item }) => {
+                     return <RestaurantInfoCard restaurant={item} />;
+                  }}
                   keyExtractor={item => item.name}
                />
             </ListView>

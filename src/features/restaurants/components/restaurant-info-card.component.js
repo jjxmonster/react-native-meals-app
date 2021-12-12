@@ -16,7 +16,7 @@ import {
    Rating,
 } from './restaurant-info-card.styles.js';
 
-const RestaurantInfo = ({ restaurant = {} }) => {
+const RestaurantInfoCard = ({ restaurant = {} }) => {
    const {
       name = 'Some restaurant',
       icon,
@@ -32,7 +32,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
    return (
       <RestaurantCard mode='outlined'>
          <Card.Content>
-            <Card.Cover source={{ uri: photos }} />
+            <Card.Cover source={{ uri: photos[0] }} />
             <Spacer position='top' size='large'>
                <Text variant='label'>{name}</Text>
                <Rating>
@@ -44,7 +44,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
                   {isClosedTemporarily ? (
                      <Text variant='error'>CLOSED TEMPORARILY</Text>
                   ) : (
-                     <SvgXml xml={open} width={20} height={20} />
+                     isOpenNow && <SvgXml xml={open} width={20} height={20} />
                   )}
                </Rating>
                <Address>{address}</Address>
@@ -54,4 +54,4 @@ const RestaurantInfo = ({ restaurant = {} }) => {
    );
 };
 
-export default RestaurantInfo;
+export default RestaurantInfoCard;
