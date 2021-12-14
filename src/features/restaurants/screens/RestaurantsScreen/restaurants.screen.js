@@ -4,12 +4,11 @@ import { RestaurantsContext } from '../../../../services/restaurants/restaurants
 
 import { SafeAreaView, FlatList } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
-import { Searchbar } from 'react-native-paper';
 
 import RestaurantInfoCard from '../../components/restaurant-info-card.component.js';
+import Search from '../../components/search.component.js';
 import {
    AppWrapper,
-   SearchBarWrapper,
    ListView,
    LoadingIndicatorWrapper,
 } from './restaurants.screen.styles.js';
@@ -17,20 +16,24 @@ import {
 const RestaurantsScreen = () => {
    const { isLoading, error, restaurants } = useContext(RestaurantsContext);
 
-   return isLoading ? (
-      <LoadingIndicatorWrapper>
-         <ActivityIndicator animating={true} size='large' color={'tomato'} />
-      </LoadingIndicatorWrapper>
-   ) : (
+   return (
       <SafeAreaView
          style={{
             flex: 1,
          }}
       >
+         {isLoading && (
+            <LoadingIndicatorWrapper>
+               <ActivityIndicator
+                  animating={true}
+                  size='large'
+                  style={{ marginLeft: -25 }}
+                  color={'tomato'}
+               />
+            </LoadingIndicatorWrapper>
+         )}
          <AppWrapper>
-            <SearchBarWrapper>
-               <Searchbar placeholder='Search' />
-            </SearchBarWrapper>
+            <Search />
             <ListView>
                <FlatList
                   data={restaurants}

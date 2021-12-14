@@ -4,6 +4,7 @@ export const AppWrapper = styled.View`
    flex: 1;
    align-items: center;
    justify-content: center;
+   padding-top: ${({ theme }) => theme.sizes[2]};
 `;
 export const SearchBarWrapper = styled.View`
    flex: 1;
@@ -23,4 +24,7 @@ export const LoadingIndicatorWrapper = styled.View`
    flex: 1;
    align-items: center;
    justify-content: center;
+   position: absolute;
+   top: 50%;
+   left: 50%;
 `;
