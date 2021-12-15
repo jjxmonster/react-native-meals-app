@@ -4,8 +4,9 @@ import { Text } from '../../../components/Typography/text.component.js';
 import { Card } from 'react-native-paper';
 
 export const Address = styled(Text)`
-   font-size: ${({ theme }) => theme.fontSizes.body};
+   font-size: ${({ theme }) => theme.fontSizes.caption};
    font-family: ${({ theme }) => theme.fonts.body};
+   font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 export const RestaurantCard = styled(Card)`
    background-color: ${({ theme }) => theme.colors.bg.primary};
