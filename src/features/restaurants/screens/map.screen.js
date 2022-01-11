@@ -1,9 +1,13 @@
 import React from 'react';
 
-import { Text } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 
 const Map = () => {
-   return <Text>MAP</Text>;
+   return (
+      <SafeAreaView>
+         <Text>MAP</Text>
+      </SafeAreaView>
+   );
 };
 
 export default Map;
