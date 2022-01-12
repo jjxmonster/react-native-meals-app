@@ -1,10 +1,13 @@
 import styled from 'styled-components/native';
 
+import { Platform } from 'react-native';
+
 export const AppWrapper = styled.View`
    flex: 1;
    align-items: center;
    justify-content: center;
-   padding-top: ${({ theme }) => theme.sizes[2]};
+   ${({ theme }) =>
+      Platform.OS === 'android' && `padding-top:${theme.sizes[2]}`};
 `;
 export const SearchBarWrapper = styled.View`
    flex: 1;

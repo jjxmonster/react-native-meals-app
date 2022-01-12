@@ -32,7 +32,9 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
    return (
       <RestaurantCard mode='outlined'>
          <Card.Content>
-            <Card.Cover source={{ uri: photos[0] }} />
+            <Card.Cover
+               source={{ uri: typeof photos === 'array' ? photos[0] : photos }}
+            />
             <Spacer position='top' size='large'>
                <Text variant='label'>{name}</Text>
                <Rating>
