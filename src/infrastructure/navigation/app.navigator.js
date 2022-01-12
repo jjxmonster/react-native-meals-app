@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
 //screens
-import RestaurantsScreen from '../../features/restaurants/screens/RestaurantsScreen/restaurants.screen.js';
+import RestaurantsNavigator from './restaurants.navigator.js';
 import SettingsScreen from '../../features/restaurants/screens/settings.screen.js';
 import Map from '../../features/restaurants/screens/map.screen.js';
 // nav icons
@@ -40,7 +40,7 @@ function MyTabs() {
             headerShown: false,
          })}
       >
-         <Tab.Screen name='Restaurants' component={RestaurantsScreen} />
+         <Tab.Screen name='Restaurants' component={RestaurantsNavigator} />
          <Tab.Screen name='Map' component={Map} />
          <Tab.Screen name='Settings' component={SettingsScreen} />
       </Tab.Navigator>

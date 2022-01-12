@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context.js';
 
@@ -13,7 +14,7 @@ import {
    LoadingIndicatorWrapper,
 } from './restaurants.screen.styles.js';
 
-const RestaurantsScreen = () => {
+const RestaurantsScreen = ({ navigation }) => {
    const { isLoading, error, restaurants } = useContext(RestaurantsContext);
 
    return (
@@ -38,7 +39,15 @@ const RestaurantsScreen = () => {
                <FlatList
                   data={restaurants}
                   renderItem={({ item }) => {
-                     return <RestaurantInfoCard restaurant={item} />;
+                     return (
+                        <TouchableOpacity
+                           onPress={() =>
+                              navigation.navigate('RestaurantDetail')
+                           }
+                        >
+                           <RestaurantInfoCard restaurant={item} />
+                        </TouchableOpacity>
+                     );
                   }}
                   keyExtractor={item => item.name}
                />
