@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components/native';
 
 import { View } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -33,8 +32,11 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
       <RestaurantCard mode='outlined'>
          <Card.Content>
             <Card.Cover
-               source={{ uri: typeof photos === 'array' ? photos[0] : photos }}
+               source={{
+                  uri: typeof photos === 'object' ? photos[0] : photos,
+               }}
             />
+
             <Spacer position='top' size='large'>
                <Text variant='label'>{name}</Text>
                <Rating>

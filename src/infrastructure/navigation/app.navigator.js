@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 //screens
 import RestaurantsNavigator from './restaurants.navigator.js';
 import SettingsScreen from '../../features/restaurants/screens/settings.screen.js';
-import Map from '../../features/restaurants/screens/map.screen.js';
+import Map from '../../features/map/screens/map.screen.js';
 // nav icons
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';

@@ -1,11 +1,11 @@
 import React from 'react';
-
+import MapView from 'react-native-maps';
 import { SafeAreaView, Text } from 'react-native';
 
 const Map = () => {
    return (
       <SafeAreaView>
-         <Text>MAP</Text>
+         <MapView style={{ height: '100%' }} />
       </SafeAreaView>
    );
 };
