@@ -14,21 +14,30 @@ const Map = styled(MapView)`
 
 const MapScreen = () => {
    const { location } = useContext(LocationContext);
-   const { restaurants = [] } = useContext(RestaurantContext);
+   const { restaurants = [] } = useContext(RestaurantsContext);
 
    const [latDelta, setLatDelta] = useState();
 
-   const [viewport] = location;
+   const { viewport, lat, lng } = location;
 
    useEffect(() => {
       const northeastLat = viewport.northeast.lat;
-      const southweastLat = viewportsouthweast.lat;
+      const southweastLat = viewport.southwest.lat;
+
+      setLatDelta(northeastLat - southweastLat);
    }, [location]);
 
    return (
       <>
          <Search />
-         <Map>
+         <Map
+            region={{
+               latitude: lat,
+               longitude: lng,
+               latitudeDelta: latDelta,
+               longitudeDelta: 0.02,
+            }}
+         >
             {restaurants.map(restaurant => {
                return null;
             })}
