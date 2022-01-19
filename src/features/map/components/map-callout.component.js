@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import WebView from 'react-native-webview';
 import { Text, View, Image, Platform } from 'react-native';
 
 const RestaurantWrapper = styled.View`
@@ -12,13 +13,21 @@ const CompactImage = styled.Image`
    height: 100px;
    margin-bottom: ${({ theme }) => theme.space[2]};
 `;
+const AndroidImageWrapper = styled(WebView)`
+   border-radius: 10px;
+   width: 120px;
+   height: 100px;
+   margin-bottom: ${({ theme }) => theme.space[2]};
+`;
 
 const isAndroid = Platform.OS === 'android';
 
 const MapCallout = ({ restaurant }) => {
+   const Image = isAndroid ? AndroidImageWrapper : CompactImage;
+
    return (
       <RestaurantWrapper>
-         <CompactImage source={{ uri: restaurant.photos[0] }} />
+         <Image source={{ uri: restaurant.photos[0] }} />
          <Text variant='caption'>{restaurant.name}</Text>
       </RestaurantWrapper>
    );

@@ -4,13 +4,13 @@ import { List } from 'react-native-paper';
 
 import RestaurantInfoCard from '../../components/restaurant-info-card.component.js';
 
-const RestaurantDetailsScreen = ({ restaurant }) => {
+const RestaurantDetailsScreen = ({ route }) => {
    const [breakfastExpanded, setBreakfastExpanded] = useState(false);
    const [lunchExpanded, setLunchExpanded] = useState(false);
    const [dinnerExpanded, setDinnerExpanded] = useState(false);
    const [drinksExpanded, setDrinksExpanded] = useState(false);
 
-   const handlePress = () => setExpanded(!expanded);
+   const { restaurant } = route.params;
    return (
       <>
          <RestaurantInfoCard restaurant={restaurant} />
