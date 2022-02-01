@@ -5,7 +5,7 @@ import { SearchBarWrapper } from '../screens/RestaurantsScreen/restaurants.scree
 
 import { LocationContext } from '../../../services/location/location.context.js';
 
-const Search = () => {
+const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
    const { keyword, search } = useContext(LocationContext);
    const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -18,6 +18,8 @@ const Search = () => {
          <Searchbar
             placeholder='Search for a location'
             value={searchKeyword}
+            icon={isFavouritesToggled ? 'heart' : 'heart-outline'}
+            onIconPress={() => onFavouritesToggle()}
             onSubmitEditing={() => {
                search(searchKeyword);
             }}

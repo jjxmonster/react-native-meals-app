@@ -5,6 +5,7 @@ import { Text, View, Image, Platform } from 'react-native';
 
 const RestaurantWrapper = styled.View`
    align-items: center;
+   max-width: 120px;
 `;
 
 const CompactImage = styled.Image`

@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 export const AppWrapper = styled.View`
    flex: 1;
-   align-items: center;
+   /* align-items: center; */
    justify-content: center;
    ${({ theme }) =>
       Platform.OS === 'android' && `padding-top:${theme.sizes[2]}`};

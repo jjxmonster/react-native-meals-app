@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context.js';
+import { FavouritesContext } from '../../../../services/favourites/favourites.context.js';
 
 import { SafeAreaView, FlatList } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 
 import RestaurantInfoCard from '../../components/restaurant-info-card.component.js';
 import Search from '../../components/search.component.js';
+import FavouritesBar from '../../../../components/Favourite/favourites-bar.component.js';
 import {
    AppWrapper,
    ListView,
@@ -16,6 +18,9 @@ import {
 
 const RestaurantsScreen = ({ navigation }) => {
    const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+   const { favourites } = useContext(FavouritesContext);
+
+   const [isToggled, setIsToggled] = useState(false);
 
    return (
       <SafeAreaView
@@ -34,7 +39,16 @@ const RestaurantsScreen = ({ navigation }) => {
             </LoadingIndicatorWrapper>
          )}
          <AppWrapper>
-            <Search />
+            <Search
+               isFavouritesToggled={isToggled}
+               onFavouritesToggle={() => setIsToggled(!isToggled)}
+            />
+            {isToggled && (
+               <FavouritesBar
+                  onNavigate={navigation.navigate}
+                  favourites={favourites}
+               />
+            )}
             <ListView>
                <FlatList
                   data={restaurants}
