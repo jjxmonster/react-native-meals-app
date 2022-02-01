@@ -2,6 +2,7 @@ import React from 'react';
 
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context.js';
 import { LocationContextProvider } from './src/services/location/location.context.js';
+import { FavouritesContextProvider } from './src/services/favourites/favourites.context.js';
 
 // fonts
 import {
@@ -32,11 +33,13 @@ export default function App() {
    return (
       <>
          <ThemeProvider theme={theme}>
-            <LocationContextProvider>
-               <RestaurantsContextProvider>
-                  <AppNavigator />
-               </RestaurantsContextProvider>
-            </LocationContextProvider>
+            <FavouritesContextProvider>
+               <LocationContextProvider>
+                  <RestaurantsContextProvider>
+                     <AppNavigator />
+                  </RestaurantsContextProvider>
+               </LocationContextProvider>
+            </FavouritesContextProvider>
          </ThemeProvider>
          <ExpoStatusBar style='auto' />
       </>

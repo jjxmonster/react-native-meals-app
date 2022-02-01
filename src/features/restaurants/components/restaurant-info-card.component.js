@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { Card } from 'react-native-paper';
 import { Text } from '../../../components/Typography/text.component.js';
 import { Spacer } from '../../../components/Spacer/spacer.component.js';
+import { Favourite } from '../../../components/Favourite/favourite.component.js';
 
 import { SvgXml } from 'react-native-svg';
 import star from '../../../../assets/star.js';
@@ -30,6 +31,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 
    return (
       <RestaurantCard mode='outlined'>
+         <Favourite restaurant={restaurant} />
          <Card.Content>
             <Card.Cover
                source={{
