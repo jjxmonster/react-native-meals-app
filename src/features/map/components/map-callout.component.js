@@ -23,8 +23,8 @@ const AndroidImageWrapper = styled(WebView)`
 
 const isAndroid = Platform.OS === 'android';
 
-const MapCallout = ({ restaurant }) => {
-   const Image = isAndroid ? AndroidImageWrapper : CompactImage;
+const MapCallout = ({ restaurant, isMap }) => {
+   const Image = isAndroid && isMap ? AndroidImageWrapper : CompactImage;
 
    return (
       <RestaurantWrapper>
