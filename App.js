@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { initializeApp, getApps } from 'firebase/app';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { FIREBASE_API_KEY } from '@env';
 
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context.js';
 import { LocationContextProvider } from './src/services/location/location.context.js';
@@ -21,7 +21,7 @@ import { theme } from './src/infrastructure/theme';
 import AppNavigator from './src/infrastructure/navigation/app.navigator.js';
 
 const firebaseConfig = {
-   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+   apiKey: FIREBASE_API_KEY,
    authDomain: 'meals-to-go-4d722.firebaseapp.com',
    projectId: 'meals-to-go-4d722',
    storageBucket: 'meals-to-go-4d722.appspot.com',
@@ -39,15 +39,6 @@ export default function App() {
    const [latoLoaded] = useLato({
       Lato_400Regular,
    });
-
-   useEffect(() => {
-      signInWithEmailAndPassword('email@binni.io', 'password')
-         .then(user => {
-            console.log(user.email);
-            setIsAuthenticated(true);
-         })
-         .catch(err => console.log(err));
-   }, []);
 
    if (!oswaldLoaded || !latoLoaded) {
       return null;
