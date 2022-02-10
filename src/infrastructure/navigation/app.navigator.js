@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 
 //screens
 import RestaurantsNavigator from './restaurants.navigator.js';
@@ -49,9 +48,9 @@ function MyTabs() {
 
 const AppNavigator = () => {
    return (
-      <NavigationContainer>
+      <>
          <MyTabs />
-      </NavigationContainer>
+      </>
    );
 };
 
