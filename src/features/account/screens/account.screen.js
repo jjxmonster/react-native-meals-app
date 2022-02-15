@@ -6,12 +6,14 @@ import {
    StyledAccountCover,
    StyledAccountContainer,
    StyledAuthButton,
+   StyledTitle,
 } from '../components/account.styles.js';
 
 const AccountScreen = ({ navigation }) => {
    return (
       <StyledImageBackground>
          <StyledAccountCover />
+         <StyledTitle>Meals To Go</StyledTitle>
          <StyledAccountContainer>
             <StyledAuthButton
                icon='lock-open-outline'
