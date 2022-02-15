@@ -24,7 +24,7 @@ const AccountScreen = ({ navigation }) => {
             </StyledAuthButton>
             <Spacer size='large'>
                <StyledAuthButton
-                  icon='lock-open-outline'
+                  icon='mail'
                   mode='contained'
                   onPress={() => navigation.navigate('Register')}
                >

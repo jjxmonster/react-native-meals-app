@@ -39,7 +39,6 @@ const LoginScreen = ({ navigation }) => {
                      textContentType='password'
                      secureTextEntry
                      autoCapitalize='none'
-                     secure
                      onChangeText={text => setPassword(text)}
                   />
                </Spacer>
@@ -52,7 +51,7 @@ const LoginScreen = ({ navigation }) => {
                      Login
                   </StyledAuthButton>
                </Spacer>
-               {error && (
+               {error > 0 && (
                   <Spacer size='large'>
                      <Text style={{ color: 'red', textAlign: 'center' }}>
                         {error.replace('FirebaseError: Firebase: ', '')}
