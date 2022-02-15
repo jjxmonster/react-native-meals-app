@@ -1,5 +1,5 @@
 import React from 'react';
-import { initializeApp, getApps } from 'firebase/app';
+import { initializeApp, getApp } from 'firebase/app';
 import { FIREBASE_API_KEY } from '@env';
 
 import { AuthenticationContextProvider } from './src/services/authentication/authentication.context.js';
@@ -30,7 +30,15 @@ const firebaseConfig = {
    appId: '1:157312654518:web:9dc40e990637fd7c069a17',
 };
 
-const app = initializeApp(firebaseConfig);
+const createFirebaseApp = (config = {}) => {
+   try {
+      return getApp();
+   } catch (err) {
+      return initializeApp(config);
+   }
+};
+
+const firebaseApp = createFirebaseApp(firebaseConfig);
 
 export default function App() {
    const [oswaldLoaded] = useOswald({
@@ -43,11 +51,10 @@ export default function App() {
    if (!oswaldLoaded || !latoLoaded) {
       return null;
    }
-
    return (
       <>
          <ThemeProvider theme={theme}>
-            <AuthenticationContextProvider>
+            <AuthenticationContextProvider firebaseApp={firebaseApp}>
                <FavouritesContextProvider>
                   <LocationContextProvider>
                      <RestaurantsContextProvider>
