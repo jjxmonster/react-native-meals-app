@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import { AuthenticationContext } from '../../../services/authentication/authentication.context';
 
+import { ActivityIndicator, Colors } from 'react-native-paper';
 import { Text } from 'react-native';
 import { Spacer } from '../../../components/Spacer/spacer.component.js';
 import {
@@ -16,7 +17,7 @@ import {
 const LoginScreen = ({ navigation }) => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-   const { onLogin, error } = useContext(AuthenticationContext);
+   const { onLogin, isLoading, error } = useContext(AuthenticationContext);
 
    return (
       <StyledAccountCover>
@@ -43,15 +44,22 @@ const LoginScreen = ({ navigation }) => {
                   />
                </Spacer>
                <Spacer size='large'>
-                  <StyledAuthButton
-                     icon='lock-open-outline'
-                     mode='contained'
-                     onPress={() => onLogin(email, password)}
-                  >
-                     Login
-                  </StyledAuthButton>
+                  {!isLoading ? (
+                     <StyledAuthButton
+                        icon='lock-open-outline'
+                        mode='contained'
+                        onPress={() => onLogin(email, password)}
+                     >
+                        Login
+                     </StyledAuthButton>
+                  ) : (
+                     <ActivityIndicator
+                        animating={true}
+                        color={Colors.blue300}
+                     />
+                  )}
                </Spacer>
-               {error > 0 && (
+               {error && (
                   <Spacer size='large'>
                      <Text style={{ color: 'red', textAlign: 'center' }}>
                         {error.replace('FirebaseError: Firebase: ', '')}

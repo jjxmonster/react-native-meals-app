@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { AuthenticationContext } from '../../../services/authentication/authentication.context';
 
 import { Text } from 'react-native';
+import { ActivityIndicator, Colors } from 'react-native-paper';
 import { Spacer } from '../../../components/Spacer/spacer.component.js';
 import {
    StyledImageBackground,
@@ -18,7 +19,7 @@ const LoginScreen = ({ navigation }) => {
    const [password, setPassword] = useState('');
    const [repeatedPassword, setRepeatedPassword] = useState('');
 
-   const { onRegister, error } = useContext(AuthenticationContext);
+   const { onRegister, isLoading, error } = useContext(AuthenticationContext);
 
    return (
       <StyledAccountCover>
@@ -54,15 +55,22 @@ const LoginScreen = ({ navigation }) => {
                   />
                </Spacer>
                <Spacer size='large'>
-                  <StyledAuthButton
-                     icon='mail'
-                     mode='contained'
-                     onPress={() =>
-                        onRegister(email, password, repeatedPassword)
-                     }
-                  >
-                     Register
-                  </StyledAuthButton>
+                  {!isLoading ? (
+                     <StyledAuthButton
+                        icon='mail'
+                        mode='contained'
+                        onPress={() =>
+                           onRegister(email, password, repeatedPassword)
+                        }
+                     >
+                        Register
+                     </StyledAuthButton>
+                  ) : (
+                     <ActivityIndicator
+                        animating={true}
+                        color={Colors.blue300}
+                     />
+                  )}
                </Spacer>
                {error && (
                   <Spacer size='large'>
