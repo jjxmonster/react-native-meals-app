@@ -3,9 +3,6 @@ import { initializeApp, getApp } from 'firebase/app';
 import { FIREBASE_API_KEY } from '@env';
 
 import { AuthenticationContextProvider } from './src/services/authentication/authentication.context.js';
-import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context.js';
-import { LocationContextProvider } from './src/services/location/location.context.js';
-import { FavouritesContextProvider } from './src/services/favourites/favourites.context.js';
 
 // fonts
 import {
@@ -55,13 +52,7 @@ export default function App() {
       <>
          <ThemeProvider theme={theme}>
             <AuthenticationContextProvider firebaseApp={firebaseApp}>
-               <FavouritesContextProvider>
-                  <LocationContextProvider>
-                     <RestaurantsContextProvider>
-                        <Navigation />
-                     </RestaurantsContextProvider>
-                  </LocationContextProvider>
-               </FavouritesContextProvider>
+               <Navigation />
             </AuthenticationContextProvider>
          </ThemeProvider>
          <ExpoStatusBar style='auto' />

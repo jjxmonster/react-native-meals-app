@@ -10,6 +10,10 @@ import Map from '../../features/map/screens/map.screen.js';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+//context
+import { RestaurantsContextProvider } from '../../services/restaurants/restaurants.context.js';
+import { LocationContextProvider } from '../../services/location/location.context.js';
+import { FavouritesContextProvider } from '../../services/favourites/favourites.context.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,9 +52,13 @@ function MyTabs() {
 
 const AppNavigator = () => {
    return (
-      <>
-         <MyTabs />
-      </>
+      <FavouritesContextProvider>
+         <LocationContextProvider>
+            <RestaurantsContextProvider>
+               <MyTabs />
+            </RestaurantsContextProvider>
+         </LocationContextProvider>
+      </FavouritesContextProvider>
    );
 };
 
