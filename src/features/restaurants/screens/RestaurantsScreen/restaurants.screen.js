@@ -15,6 +15,7 @@ import {
    ListView,
    LoadingIndicatorWrapper,
 } from './restaurants.screen.styles.js';
+import { FadeInView } from '../../../../components/Animations/fade.animation.js';
 
 const RestaurantsScreen = ({ navigation }) => {
    const { isLoading, error, restaurants } = useContext(RestaurantsContext);
@@ -38,6 +39,7 @@ const RestaurantsScreen = ({ navigation }) => {
                />
             </LoadingIndicatorWrapper>
          )}
+
          <AppWrapper>
             <Search
                isFavouritesToggled={isToggled}
@@ -49,6 +51,7 @@ const RestaurantsScreen = ({ navigation }) => {
                   favourites={favourites}
                />
             )}
+
             <ListView>
                <FlatList
                   data={restaurants}
@@ -61,7 +64,9 @@ const RestaurantsScreen = ({ navigation }) => {
                               })
                            }
                         >
-                           <RestaurantInfoCard restaurant={item} />
+                           <FadeInView>
+                              <RestaurantInfoCard restaurant={item} />
+                           </FadeInView>
                         </TouchableOpacity>
                      );
                   }}
