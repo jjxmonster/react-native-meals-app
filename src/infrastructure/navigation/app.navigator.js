@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //screens
 import RestaurantsNavigator from './restaurants.navigator.js';
-import SettingsScreen from '../../features/restaurants/screens/settings.screen.js';
+import SettingsNavigator from './settings.navigator.js';
 import Map from '../../features/map/screens/map.screen.js';
 // nav icons
 import { Ionicons } from '@expo/vector-icons';
@@ -27,13 +27,10 @@ function MyTabs() {
                      return (
                         <Ionicons name='restaurant' size={24} color={color} />
                      );
-
                   case 'Map':
                      return <Entypo name='map' size={24} color={color} />;
-
                   case 'Settings':
                      return <Feather name='settings' size={24} color={color} />;
-
                   default:
                      break;
                }
@@ -45,7 +42,7 @@ function MyTabs() {
       >
          <Tab.Screen name='Restaurants' component={RestaurantsNavigator} />
          <Tab.Screen name='Map' component={Map} />
-         <Tab.Screen name='Settings' component={SettingsScreen} />
+         <Tab.Screen name='Settings' component={SettingsNavigator} />
       </Tab.Navigator>
    );
 }
