@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 import { SafeAreaView } from 'react-native';
@@ -23,12 +24,14 @@ const SettingsScreen = ({ navigation }) => {
             flex: 1,
          }}
       >
-         <AvatarContainer>
-            <Avatar.Icon size={180} icon='human' backgroundColor='#2182BD' />
-            <Spacer position='top' size='large'>
-               <Text variant='label'>{user.email}</Text>
-            </Spacer>
-         </AvatarContainer>
+         <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
+            <AvatarContainer>
+               <Avatar.Icon size={180} icon='human' backgroundColor='#2182BD' />
+               <Spacer position='top' size='large'>
+                  <Text variant='label'>{user.email}</Text>
+               </Spacer>
+            </AvatarContainer>
+         </TouchableOpacity>
          <List.Section>
             <SettingsItem
                title='Favourites'
